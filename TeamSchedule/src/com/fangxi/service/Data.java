@@ -1,4 +1,4 @@
-package com.fangxi;
+package com.fangxi.service;
 
 
 public class Data {

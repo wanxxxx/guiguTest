@@ -1,4 +1,4 @@
-package com.fangxi;
+package com.fangxi.view;
 
 import java.util.*;
 /**
