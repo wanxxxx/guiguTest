@@ -1,4 +1,4 @@
-package com.fangxi.domain.equipment;
+package com.fangxi.domain;
 
 import com.fangxi.domain.Equipment;
 
@@ -34,7 +34,7 @@ public class Printer implements Equipment {
 
     @Override
     public String getDescription() {
-        return "打印机";
+        return name+"("+type+")";
     }
 
 }

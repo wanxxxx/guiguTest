@@ -12,9 +12,8 @@ public class Programmer extends Employee {
     private Status status = Status.FREE;
     private Equipment equipment;
 
-    public Programmer(int id, String name, int age, double salary, int memberId, Equipment equipment) {
+    public Programmer(int id, String name, int age, double salary, Equipment equipment) {
         super(id, name, age, salary);
-        this.memberId = memberId;
         this.equipment = equipment;
     }
 }

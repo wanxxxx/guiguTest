@@ -5,11 +5,11 @@ package com.fangxi.domain;
  * @Description:
  * @Date 2020-12-06 20:43
  */
-public class Architect extends Employee {
+public class Architect extends Designer {
     private int stock;
 
-    public Architect(int id, String name, int age, double salary, int stock) {
-        super(id, name, age, salary);
+    public Architect(int id, String name, int age, double salary, Equipment equipment, double bonus, int stock) {
+        super(id, name, age, salary, equipment, bonus);
         this.stock = stock;
     }
 
@@ -19,5 +19,10 @@ public class Architect extends Employee {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+
     }
 }

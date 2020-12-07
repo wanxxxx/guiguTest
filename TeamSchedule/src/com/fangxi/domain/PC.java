@@ -1,4 +1,4 @@
-package com.fangxi.domain.equipment;
+package com.fangxi.domain;
 
 import com.fangxi.domain.Equipment;
 
@@ -34,6 +34,7 @@ public class PC implements Equipment {
 
     @Override
     public String getDescription() {
-        return "电脑";
+        return model + "(" + display + ")";
+
     }
 }

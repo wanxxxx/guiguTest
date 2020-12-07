@@ -1,4 +1,4 @@
-package com.fangxi.domain.equipment;
+package com.fangxi.domain;
 
 import com.fangxi.domain.Equipment;
 
@@ -34,6 +34,6 @@ public class NoteBook implements Equipment {
 
     @Override
     public String getDescription() {
-        return "笔记本";
+        return model+"("+price+")";
     }
 }

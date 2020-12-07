@@ -5,7 +5,7 @@ package com.fangxi.domain;
  * @Description:
  * @Date 2020-12-06 20:43
  */
-public class Designer extends Employee{
+public class Designer extends Programmer{
     private double bonus;
 
     public double getBonus() {
@@ -16,8 +16,17 @@ public class Designer extends Employee{
         this.bonus = bonus;
     }
 
-    public Designer(int id, String name, int age, double salary, double bonus) {
-        super(id, name, age, salary);
+    public Designer(int id, String name, int age, double salary, Equipment equipment, double bonus) {
+        super(id, name, age, salary, equipment);
         this.bonus = bonus;
+    }
+    public String  getDetails(){
+        return super.getDetails()+"\t\t"+this.bonus;
+    }
+    @Override
+    public String toString() {
+        return "Designer{" +
+                "bonus=" + bonus +
+                '}';
     }
 }
