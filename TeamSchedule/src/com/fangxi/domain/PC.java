@@ -33,7 +33,7 @@ public class PC implements Equipment {
     }
 
     @Override
-    public String getDescription() {
+    public String toString() {
         return model + "(" + display + ")";
 
     }

@@ -10,4 +10,9 @@ public class Status {
     public static final Status FREE=new Status("FREE");
     public static final Status BUSY=new Status("VOCATION");
     public static final Status VOCATION=new Status("VOCATION");
+
+    @Override
+    public String toString() {
+        return NAME;
+    }
 }

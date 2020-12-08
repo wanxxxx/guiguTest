@@ -33,7 +33,7 @@ public class NoteBook implements Equipment {
     }
 
     @Override
-    public String getDescription() {
+    public String toString() {
         return model+"("+price+")";
     }
 }

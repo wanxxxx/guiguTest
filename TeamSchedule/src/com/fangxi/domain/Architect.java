@@ -21,8 +21,13 @@ public class Architect extends Designer {
         this.stock = stock;
     }
 
-    @Override
-    public String toString() {
+    public String getDetailsOfTeam() {
+        return "\t"+getMemberId() + "/" + super.getDetails() + "\t" + "架构师"+"\t"+getBonus()+"\t"+getStock();
+    }
 
+    @Override
+
+    public String toString() {
+        return getDetails()+"\t"+"架构师"+"\t"+getStatus()+"\t"+getBonus()+"\t"+getStock()+"\t"+getEquipment();
     }
 }

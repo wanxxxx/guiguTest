@@ -33,7 +33,7 @@ public class Printer implements Equipment {
     }
 
     @Override
-    public String getDescription() {
+    public String toString() {
         return name+"("+type+")";
     }
 

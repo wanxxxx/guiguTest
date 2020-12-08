@@ -1,7 +1,10 @@
 package com.fangxi.view;
 
 import com.fangxi.domain.Employee;
+import com.fangxi.domain.Programmer;
 import com.fangxi.service.NameListService;
+import com.fangxi.service.TeamException;
+import com.fangxi.service.TeamService;
 
 /**
  * @Author fangxi
@@ -10,19 +13,23 @@ import com.fangxi.service.NameListService;
  */
 public class TeamView {
     NameListService nameListService = new NameListService();
-    Employee[] employees=nameListService.getAllEmployees();
+    TeamService teamService = new TeamService();
+
     public static void main(String[] args) {
         TeamView teamView = new TeamView();
-        teamView.showTeamList();
+        teamView.startTeamView();
     }
 
     //0-启动
     public void startTeamView() {
-        char choose;
+        char choose = '0';
         boolean loopFlag = true;
+
         do {
-            showTeamList();
-            System.out.println("----------------------------------------------------------------------------------------------\n" +
+            if (choose != '1') {
+                showEmployeeList();
+            }
+            System.out.print("----------------------------------------------------------------------------------------------\n" +
                     "1-团队列表  2-添加团队成员  3-删除团队成员 4-退出   请选择(1-4)：");
             choose = TSUtility.readMenuSelection();
             switch (choose) {
@@ -44,40 +51,59 @@ public class TeamView {
         } while (loopFlag);
     }
 
-    //1-团队列表
-    public void showTeamList() {
+    //0-员工队列表
+    public void showEmployeeList() {
 //        当选择“团队列表”菜单时，先列出所有员工
-
-        System.out.println("-------------------------------------开发团队调度软件--------------------------------------");
-        System.out.println("ID\t\t姓名\t\t年龄\t\t工资\t\t职位\t\t状态\t\t奖金\t\t股票\t\t领用设备");
-        for (Employee s:employees){
-            System.out.println(s.toString());
+        System.out.println("---------------------------------------开发团队调度软件----------------------------------------");
+        System.out.println("ID\t姓名\t年龄\t工资\t职位\t状态\t奖金\t股票\t领用设备");
+        Employee[] employees = nameListService.getAllEmployees();
+        for (Employee s : employees) {
+            System.out.println(s);
         }
-//        再列出开发团队中的现有成员，例如：
 
+    }
 
+    //1-开发团队列表
+    public void showTeamList() {
+        Programmer[] team = teamService.getTeam();
+        if (teamService.getTeamNum() > 0) {
+            System.out.println("-----------------------------------团队成员列表----------------------------------\n");
+            System.out.println("TID/ID\t姓名\t年龄\t工资\t职位\t奖金\t股票");
+            for (Programmer p : team) {
+                System.out.println(p.getDetailsOfTeam());
+            }
+        } else {
+            System.out.println("----------------------------------团队暂时没有成员------------------------------------\n");
+        }
     }
 
     //2-添加团队成员
     public void addTeamMember() {
-//        成员已满，无法添加
-//        该成员不是开发人员，无法添加
-//        该员工已在本开发团队中
-//        该员工已是某团队成员
-//        该员正在休假，无法添加
-//        团队中至多只能有一名架构师
-//        团队中至多只能有两名设计师
-//        团队中至多只能有三名程序员
+        System.out.print("请输入要添加的员工ID：");
+        int id = TSUtility.readInt();
+        try {
+            Employee e = nameListService.getEmployee(id);
+            teamService.addTeamMember(e);
+        } catch (TeamException teamException) {
+            System.out.println("添加失败，失败原因：" + teamException.getMessage());
+            TSUtility.readReturn();
+        }
 
     }
 
+
     //3-删除团队成员
     public void deleteTeamMember() {
-//        请输入要删除员工的TID：1
-//        确认是否删除(Y/N)：y
-//        删除成功
-//        按回车键继续...
-//        删除成功后，按回车键将重新显示主界面。
+        System.out.print("请输入要删除的TID：");
+        int id = TSUtility.readInt();
+        System.out.print("确认是否删除(Y/N)：");
+        if (TSUtility.readConfirmSelection() == 'N') return;
+        try {
+            teamService.removeTeamMember(id);
+        } catch (TeamException teamException) {
+            System.out.println("删除失败，失败原因：" + teamException.getMessage());
+            TSUtility.readReturn();
+        }
     }
 
 

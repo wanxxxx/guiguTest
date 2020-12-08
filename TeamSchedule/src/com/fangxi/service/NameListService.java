@@ -53,14 +53,19 @@ public class NameListService {
         return employees;
     }
 
-    public Employee getEmployee(int index) {
-        return employees[index];
+    public Employee getEmployee(int id) throws TeamException {
+        for (Employee e:
+             employees) {
+            if(e.getId()==id)
+                return e;
+        }
+        throw new TeamException("没找到该员工");
     }
 
     public Equipment createNewEq(int index) {
         int type = Integer.parseInt(EQUIPMENTS[index][0]);
         String str1 = EQUIPMENTS[index][1];
-        String str2 = EQUIPMENTS[index][3];
+        String str2 = EQUIPMENTS[index][2];
         switch (type) {
             case PC:
                 return new PC(str1, str2);

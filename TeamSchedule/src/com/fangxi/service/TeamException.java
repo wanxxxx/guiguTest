@@ -5,5 +5,12 @@ package com.fangxi.service;
  * @Description:
  * @Date 2020-12-06 21:18
  */
-public class TeamException {
+public class TeamException extends Exception{
+    static final long serialVersionUID = -33875169145645948L;
+    public TeamException() {
+    }
+
+    public TeamException(String message) {
+        super(message);
+    }
 }

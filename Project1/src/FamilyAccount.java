@@ -9,11 +9,11 @@ public class FamilyAccount {
 
     public char show() {
         System.out.print("-----------------家庭收支记账软件-----------------\n" +
-                "\t\t1 收支明细\n" +
-                "\t\t2 登记收入\n" +
-                "\t\t3 登记支出\n" +
-                "\t\t4 退   出\n" +
-                "\t\t请选择(1-4)：");
+                "\t1 收支明细\n" +
+                "\t2 登记收入\n" +
+                "\t3 登记支出\n" +
+                "\t4 退   出\n" +
+                "\t请选择(1-4)：");
         return Utility.readMenuSelection();
     }
 
