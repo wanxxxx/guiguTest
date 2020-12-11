@@ -6,6 +6,9 @@ import com.fangxi.service.NameListService;
 import com.fangxi.service.TeamException;
 import com.fangxi.service.TeamService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author fangxi
  * @Description:
@@ -14,12 +17,11 @@ import com.fangxi.service.TeamService;
 public class TeamView {
     NameListService nameListService = new NameListService();
     TeamService teamService = new TeamService();
-
     public static void main(String[] args) {
         TeamView teamView = new TeamView();
+        List<String> list = new ArrayList<String>();
         teamView.startTeamView();
     }
-
     //0-启动
     public void startTeamView() {
         char choose = '0';
@@ -43,12 +45,14 @@ public class TeamView {
                     deleteTeamMember();
                     break;
                 case '4':
+                    System.out.print("确认是否退出(Y/N)：");
                     if (TSUtility.readConfirmSelection() == 'Y') {
                         loopFlag = false;
                     }
                     break;
             }
         } while (loopFlag);
+        System.out.println("成功退出 ");
     }
 
     //0-员工队列表
