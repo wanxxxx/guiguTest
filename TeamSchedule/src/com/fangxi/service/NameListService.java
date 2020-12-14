@@ -13,7 +13,7 @@ public class NameListService {
     private Employee[] employees;
 
     public NameListService() {
-    //根据项目提供的Data类构建相应大小的employees数组
+        //根据项目提供的Data类构建相应大小的employees数组
         employees = new Employee[EMPLOYEES.length];
 
         for (int i = 0; i < EMPLOYEES.length; i++) {
@@ -54,10 +54,11 @@ public class NameListService {
     }
 
     public Employee getEmployee(int id) throws TeamException {
-        for (Employee e:
-             employees) {
-            if(e.getId()==id)
+        for (Employee e :
+                employees) {
+            if (e.getId() == id) {
                 return e;
+            }
         }
         throw new TeamException("没找到该员工");
     }
