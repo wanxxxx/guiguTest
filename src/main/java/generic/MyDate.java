@@ -2,12 +2,12 @@ package generic;
 
 /**
  * MyDate类包含:
- private成员变量year,month,day；并为每一个属性定义 getter, setter 方法；
-
+ * private成员变量year,month,day；并为每一个属性定义 getter, setter 方法；
+ *
  * @author shkstart
  * @create 2019 上午 10:21
  */
-public class MyDate implements Comparable{
+public class MyDate implements Comparable<MyDate> {
     private int year;
     private int month;
     private int day;
@@ -21,6 +21,7 @@ public class MyDate implements Comparable{
     public MyDate() {
 
     }
+
 
     public int getYear() {
         return year;
@@ -57,25 +58,23 @@ public class MyDate implements Comparable{
 
 
     @Override
-    public int compareTo(Object o) {
-        if(o instanceof MyDate){
-            MyDate m = (MyDate)o;
+    public int compareTo(MyDate m) {
 
-            //比较年
-            int minusYear = this.getYear() - m.getYear();
-            if(minusYear != 0){
-                return minusYear;
-            }
-            //比较月
-            int minusMonth = this.getMonth() - m.getMonth();
-            if(minusMonth != 0){
-                return minusMonth;
-            }
-            //比较日
-            return this.getDay() - m.getDay();
+        //比较年
+        int minusYear = this.getYear() - m.getYear();
+        if (minusYear != 0) {
+            return minusYear;
         }
+        //比较月
+        int minusMonth = this.getMonth() - m.getMonth();
+        if (minusMonth != 0) {
+            return minusMonth;
+        }
+        //比较日
+        return this.getDay() - m.getDay();
 
-        throw new RuntimeException("传入的数据类型不一致！");
 
     }
+
+
 }
